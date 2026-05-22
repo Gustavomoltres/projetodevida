@@ -1,11 +1,13 @@
 const botoes = document.querySelectorAll(".botao");
 
-for (let i = 0; i < botoes.length; i++) {
-  botoes[i].onclick = function () {
-    for (let j = 0; j < botoes.length; j++) {
-      botoes[j].classList.remove("ativo");
-    }
+botoes.forEach((botao) => {
+  botao.addEventListener("click", () => {
+    botoes.forEach((item) => {
+      item.classList.remove("ativo");
+      item.setAttribute("aria-pressed", "false");
+    });
 
-    botoes[i].classList.add("ativo");
-  };
-}
+    botao.classList.add("ativo");
+    botao.setAttribute("aria-pressed", "true");
+  });
+});
